@@ -37,5 +37,5 @@ function placeOrder() {
 
     localStorage.removeItem("cart");
 
-    window.location.href = "easy.html"; // back to home
+    window.location.href = "index.html"; // back to home
 }

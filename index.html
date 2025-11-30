@@ -3,72 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crunchy Feast - Full Project</title>
-
-    <link rel="stylesheet" href="cart.css">
-    <link rel="stylesheet" href="menu.css"> 
+    <title>Crunchy Feast - Home</title>
 
     <style>
-        /* General Styles */
+        /* General Styles*/
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f8f8f8;
         }
 
-        /* Slim Navbar */
+        /* Navbar / Taskbar */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background-color: #ff4b2b;
-            padding: 5px 20px;
+            padding: 10px 20px;
             color: white;
             position: sticky;
             top: 0;
-            z-index: 100;
-            font-size: 16px;
         }
 
         .logo {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
         }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 25px; /* space between links */
-        }
-
-        .nav-links a {
+        .navbar a {
             text-decoration: none;
             color: white;
+            margin: 0 10px;
             font-weight: bold;
-            padding: 5px 8px;
         }
 
-        .nav-links a:hover {
+        .navbar a:hover {
             text-decoration: underline;
         }
 
         .location-dropdown select {
-            padding: 3px 6px;
+            padding: 5px;
             border-radius: 5px;
             border: none;
+        }
+
+        .navbar button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             background-color: white;
             color: #ff4b2b;
             font-weight: bold;
-            cursor: pointer;
         }
 
-        .nav-links span {
-            font-weight: bold;
-            color: white;
-        }
-
-        /* Hero Section */
+        /* Hero Section*/
         .hero {
             position: relative;
             text-align: center;
@@ -78,8 +67,6 @@
         .hero img {
             width: 100%;
             opacity: 0.5;
-            height: 500px;
-            object-fit: cover;
         }
 
         .hero .content {
@@ -113,11 +100,10 @@
             color: white;
         }
 
-        /* Sections */
-        .why-choose, .cart-content, .checkout-content, .login-content {
+        /* Why Choose Section*/
+        .why-choose {
+            text-align: center;
             padding: 50px 20px;
-            max-width: 1200px;
-            margin: auto;
         }
 
         .why-choose h2 {
@@ -152,6 +138,7 @@
             color: #ff4b2b;
         }
 
+        /* Achievements Section*/
         .achievements {
             background-color: #28a745;
             color: white;
@@ -172,6 +159,7 @@
             min-width: 150px;
         }
 
+        /* Call to Action Section*/
         .cta {
             text-align: center;
             margin: 50px 0;
@@ -192,444 +180,122 @@
             background-color: #ff9500;
         }
 
-        /* Menu Cards */
-        .menu-section {
-            margin-bottom: 50px;
-        }
+        /* Hamburger is hidden on large screens */
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
 
-        .menu-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
+/* Hide the overflow navbar on phone */
+@media (max-width: 768px) {
 
-        .menu-card {
-            background: white;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            width: 200px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
+    .nav-content {
+        display: none;
+        flex-direction: column;
+        background-color: #ff4b2b;
+        width: 100%;
+        padding: 15px 0;
+        text-align: center;
+    }
 
-        .menu-card img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
+    .nav-content a,
+    .nav-content button,
+    .location-dropdown,
+    .group-names {
+        margin: 10px 0;
+        display: block;
+    }
 
-        .menu-card .price {
-            font-weight: bold;
-            margin: 10px 0;
-        }
+    .menu-icon {
+        display: block;
+    }
 
-        .menu-card input {
-            width: 60px;
-            padding: 5px;
-            margin-bottom: 10px;
-        }
+    .navbar {
+        flex-wrap: wrap;
+    }
 
-        .card-buttons {
-            display: flex;
-            justify-content: space-between;
-        }
+    /* When active show menu */
+    .nav-content.active {
+        display: flex;
+    }
+}
 
-        .add-btn, .buy-btn {
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .add-btn {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .buy-btn {
-            background-color: #ff4b2b;
-            color: white;
-        }
-
-        /* Checkout & Cart */
-        .checkout-box, .login-container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            max-width: 400px;
-            margin: auto;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            cursor: pointer;
-        }
-
-        /* Login */
-        .login-container h2 {
-            margin-bottom: 20px;
-            color: #ff4b2b;
-        }
-
-        .login-container button {
-            width: 95%;
-            padding: 12px;
-            border: none;
-            background-color: #ff4b2b;
-            color: white;
-            font-size: 16px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-
-        .login-container button:hover {
-            background-color: #ff7b4b;
-        }
-
-        .signup-link a {
-            color: #ff4b2b;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .section-separator {
-            border-top: 5px solid #ff4b2b;
-            margin: 40px 0;
-        }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo">Crunchy Feast</div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#menu">Menu</a>
-            <a href="#cart">Cart</a>
-            <a href="#login">Login</a>
+    <!-- Navbar / Taskbar-->
+  <div class="navbar">
+    <div class="logo">Crunchy Feast</div>
 
-            <div class="location-dropdown">
-                <select onchange="alert('Location set to: ' + this.value)">
-                    <option value="" disabled selected>Select Location</option>
-                    <option value="GT. Road , Sahiwal">GT. Road , Sahiwal</option>
-                    <option value="Railway Road , Sahiwal">Railway Road , Sahiwal</option>
-                    <option value="University Road , Sargodha">University Road , Sargodha</option>
-                    <option value="Jail Road , Sargodha">Jail Road , Sargodha</option>
-                </select>
-            </div>
+    <!-- Hamburger icon -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
-            <span>Umer Hameed</span>
-            <span>, Ali Hassan</span>
-            <span>& Ehsan Danish</span>
-        </div>
-    </nav>
+    <!-- Navigation Links -->
+    <div class="nav-content" id="navContent">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
 
-    <!-- Home Section -->
-    <section id="home" class="why-choose">
-        <div class="hero">
-            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1350&q=80" alt="Dishes">
-            <div class="content">
-                <div class="location-box">Sargodha & Sahiwal</div>
-                <div class="tagline">Satisfy Your Cravings with Delicious Food!</div>
-                <a href="#menu" class="menu-button">Menu</a>
-            </div>
-        </div>
-
-        <div class="why-choose">
-            <h2>Why Choose Our Restaurant?</h2>
-            <p>We make food ordering fast, easy, and delicious!</p>
-            <div class="specialties">
-                <div class="specialty">Fast Delivery</div>
-                <div class="specialty">Easy Ordering</div>
-                <div class="specialty">Wide Selection</div>
-                <div class="specialty">Fresh Ingredients</div>
-            </div>
-        </div>
-
-        <div class="achievements">
-            <div class="achievement-box">5000+ Happy Customers</div>
-            <div class="achievement-box">50+ Partner Restaurants</div>
-            <div class="achievement-box">24/7 Customer Support</div>
-            <div class="achievement-box">1000+ Daily Orders</div>
-        </div>
-
-        <div class="cta">
-            <a href="#menu">Let's Start Ordering</a>
-        </div>
-    </section>
-
-    <div class="section-separator"></div>
-
-    <!-- Menu Section -->
-   
-        <!-- Menu Items Here -->
-    
-    <section id="menu" class="why-choose">
-        <header class="page-header" style="text-align: center;">
-            <h1>Our Delicious Menu</h1>
-            <p>Choose from our wide selection of freshly prepared meals.</p>
-        </header>
-
-        <div class="menu-section">
-            <h2 class="section-title">Burgers</h2>
-            <div class="menu-grid">
-                <div class="menu-card">
-                    <img src="Zinger.jpeg" alt="Zinger Burger" />
-                    <h3>Zinger Burger</h3>
-                    <p class="price">Rs. 500</p>
-                    <input type="number" min="1" value="1" />
-                    <div class="card-buttons">
-                        <button class="add-btn" onclick="addToCart('Zinger Burger', 500, this)">Add</button>
-                        <button class="buy-btn" onclick="buyNow('Zinger Burger', 500, this)">Buy</button> 
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <img src="Beef.jpeg" alt="Beef Burger" />
-                    <h3>Beef Burger</h3>
-                    <p class="price">Rs. 900</p>
-                    <input type="number" min="1" value="1" />
-                    <div class="card-buttons">
-                        <button class="add-btn" onclick="addToCart('Beef Burger', 900, this)">Add</button>
-                        <button class="buy-btn" onclick="buyNow('Beef Burger', 900, this)">Buy</button>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <img src="Tower.jpeg" alt="Tower Burger" />
-                    <h3>Tower Burger</h3>
-                    <p class="price">Rs. 800</p>
-                    <input type="number" min="1" value="1" />
-                    <div class="card-buttons">
-                        <button class="add-btn" onclick="addToCart('Tower Burger', 800, this)">Add</button>
-                        <button class="buy-btn" onclick="buyNow('Tower Burger', 800, this)">Buy</button>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <img src="Mighty.jpeg" alt="Mighty Burger" />
-                    <h3>Mighty Burger</h3>
-                    <p class="price">Rs. 770</p>
-                    <input type="number" min="1" value="1" />
-                    <div class="card-buttons">
-                        <button class="add-btn" onclick="addToCart('Mighty Burger', 770, this)">Add</button>
-                        <button class="buy-btn" onclick="buyNow('Mighty Burger', 770, this)">Buy</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="menu-section">
-            <h2 class="section-title">Pizza</h2>
-            <div class="menu-grid">
-                <div class="menu-card">
-                    <img src="Tikka.jpeg" alt="Chicken Tikka" />
-                    <h3>Chicken Tikka</h3>
-                    <p class="price">Rs. 1200</p>
-                    <input type="number" min="1" value="1" />
-                    <div class="card-buttons">
-                        <button class="add-btn" onclick="addToCart('Chicken Tikka Pizza', 1200, this)">Add</button>
-                        <button class="buy-btn" onclick="buyNow('Chicken Tikka Pizza', 1200, this)">Buy</button>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <img src="Fajita.jpeg" alt="Fajita Pizza" />
-                    <h3>Fajita</h3>
-                    <p class="price">Rs. 1250</p>
-                    <input type="number" min="1" value="1" />
-                    <div class="card-buttons">
-                        <button class="add-btn" onclick="addToCart('Fajita Pizza', 1250, this)">Add</button>
-                        <button class="buy-btn" onclick="buyNow('Fajita Pizza', 1250, this)">Buy</button>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <img src="Special.jpeg" alt="Special Pizza" />
-                    <h3>Special</h3>
-                    <p class="price">Rs. 1600</p>
-                    <input type="number" min="1" value="1" />
-                    <div class="card-buttons">
-                        <button class="add-btn" onclick="addToCart('Special Pizza', 1600, this)">Add</button>
-                        <button class="buy-btn" onclick="buyNow('Special Pizza', 1600, this)">Buy</button>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <img src="Crown Crust.jpeg" alt="Crown Crust" />
-                    <h3>Crown Crust</h3>
-                    <p class="price">Rs. 1800</p>
-                    <input type="number" min="1" value="1" />
-                    <div class="card-buttons">
-                        <button class="add-btn" onclick="addToCart('Crown Crust Pizza', 1800, this)">Add</button>
-                        <button class="buy-btn" onclick="buyNow('Crown Crust Pizza', 1800, this)">Buy</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="menu-section">
-            <h2 class="section-title">Snacks & Pasta</h2>
-            <div class="menu-grid">
-                <div class="menu-card">
-                    <img src="pasta.jpeg" alt="Pasta" />
-                    <h3>Pasta</h3>
-                    <p class="price">Rs. 550</p>
-                    <input type="number" min="1" value="1" />
-                    <div class="card-buttons">
-                        <button class="add-btn" onclick="addToCart('Pasta', 550, this)">Add</button>
-                        <button class="buy-btn" onclick="buyNow('Pasta', 550, this)">Buy</button>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <img src="wings.jpeg" alt="Wings" />
-                    <h3>Wings</h3>
-                    <p class="price">Rs. 400</p>
-                    <input type="number" min="1" value="1" />
-                    <div class="card-buttons">
-                        <button class="add-btn" onclick="addToCart('Wings', 400, this)">Add</button>
-                        <button class="buy-btn" onclick="buyNow('Wings', 400, this)">Buy</button>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <img src="fries.jpeg" alt="Fries" />
-                    <h3>Fries</h3>
-                    <p class="price">Rs. 350</p>
-                    <input type="number" min="1" value="1" />
-                    <div class="card-buttons">
-                        <button class="add-btn" onclick="addToCart('Fries', 350, this)">Add</button>
-                        <button class="buy-btn" onclick="buyNow('Fries', 350, this)">Buy</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="menu-section">
-            <h2 class="section-title">Cold Drinks</h2>
-            <div class="menu-grid">
-                <div class="menu-card">
-                    <img src="drinks.jpeg" alt="Coke" />
-                    <h3>Coke</h3>
-                    <p class="price">Rs. 190</p>
-                    <input type="number" min="1" value="1" />
-                    <div class="card-buttons">
-                        <button class="add-btn" onclick="addToCart('Coke', 190, this)">Add</button>
-                        <button class="buy-btn" onclick="buyNow('Coke', 190, this)">Buy</button>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <img src="drinks.jpeg" alt="Pepsi" />
-                    <h3>Pepsi</h3>
-                    <p class="price">Rs. 170</p>
-                    <input type="number" class="qty" value="1" min="1" />
-                    <div class="card-buttons">
-                        <button class="add-btn" onclick="addToCart('Pepsi', 170, this)">Add</button>
-                        <button class="buy-btn" onclick="buyNow('Pepsi', 170, this)">Buy</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="section-separator"></div>
-
-    <!-- Login Section -->
-    <section id="login" class="login-content">
-        <div class="login-container">
-            <h2>Sign In</h2>
-
-            <input type="text" placeholder="Enter Email" required>
-            <input type="password" placeholder="Enter Password" required>
-
-            <button onclick="alert('This is a demo version. Login functionality is currently not active.')">Login</button>
-
-            <div class="signup-link">
-                Don't have an account? <a href="signup.html">Sign Up</a>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-separator"></div>
-
-    <!-- Cart Section -->
-    <section id="cart" class="cart-content" style="text-align: center;">
-        <h1>Your Cart</h1>
-        <div id="cart-items"></div>
-        <h2>Total: RS <span id="total-price">0</span></h2>
-
-        <button onclick="window.location.href='#checkout'" 
-        style="padding: 10px 20px; background: orange; border:none; color:white; cursor:pointer; font-size:18px; border-radius:8px; width: auto; margin: 5px;">
-            Proceed to Checkout
-        </button>
-        <button onclick="window.location.href='#menu'" 
-        style="padding: 10px 20px; background: red; border:none; color:white; cursor:pointer; font-size:18px; border-radius:8px; width: auto; margin: 5px;">
-            Back To Menu
-        </button>
-    </section>
-
-    <div class="section-separator"></div>
-
-    <!-- Checkout Section -->
-    <section id="checkout" class="checkout-content">
-        <div class="checkout-box">
-            <h2>Checkout</h2>
-
-            <label>Customer Name</label>
-            <input type="text" id="cust-name" placeholder="Enter your name">
-
-            <label>Phone Number</label>
-            <input type="text" id="cust-phone" placeholder="03XX XXXXXXX">
-
-            <label>Address</label>
-            <input type="text" id="cust-address" placeholder="Enter delivery address">
-
-            <label>Payment Method</label>
-            <select id="payment" onchange="toggleSS()">
-                <option value="cod">Cash on Delivery</option>
-                <option value="online">Online Payment</option>
+        <span class="location-dropdown">
+            <select>
+                <option selected>Choose Your Location</option>
+                <option>GT Road, Sahiwal</option>
+                <option>Mandhali Road, Sahiwal</option>
+                <option>Jail Road, Sargodha</option>
+                <option>University Road, Sargodha</option>
             </select>
+        </span>
 
-            <div id="ss-upload">
-                <label>Upload Payment Screenshot</label>
-                <input type="file" id="ss-file">
-            </div>
+        <span class="group-names">Umer Hameed , Ali Hassan & Ehsan Danish</span>
 
-            <h3>Total: Rs <span id="total-final"></span></h3>
+        <a href="login.html">
+            <button>Sign In / Login</button>
+        </a>
+    </div>
+</div>
 
-            <button onclick="placeOrder()">Place Order</button>
+
+    <!-- Hero Section-->
+    <div class="hero">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1350&q=80" alt="Dishes">
+        <div class="content">
+            <div class="location-box">Sargodha & Sahiwal</div>
+            <div class="tagline">Satisfy Your Cravings with Delicious Food!</div>
+            <a href="menu.html" class="menu-button">Menu</a>
         </div>
-    </section>
+    </div>
 
-    <script src="cart.js"></script>
-    <script src="checkout.js"></script>
+    <!--  Why Choose Section-->
+    <div class="why-choose">
+        <h2>Why Choose Our Restaurant?</h2>
+        <p>We make food ordering fast, easy, and delicious!</p>
+        <div class="specialties">
+            <div class="specialty">Fast Delivery</div>
+            <div class="specialty">Easy Ordering</div>
+            <div class="specialty">Wide Selection</div>
+            <div class="specialty">Fresh Ingredients</div>
+        </div>
+    </div>
+
+    <!--  Achievements Section-->
+    <div class="achievements">
+        <div class="achievement-box">5000+ Happy Customers</div>
+        <div class="achievement-box">50+ Partner Restaurants</div>
+        <div class="achievement-box">24/7 Customer Support</div>
+        <div class="achievement-box">1000+ Daily Orders</div>
+    </div>
+
+    <!--  Call to Action Section-->
+    <div class="cta">
+        <a href="menu.html">Let's Start Ordering</a>
+    </div>
+
     <script>
-        function addToCart(name, price, btn) {
-            let qtyInput = btn.closest(".menu-card").querySelector("input[type='number']");
-            let qty = parseInt(qtyInput.value);
-            if (!qty || qty < 1) { alert("Please enter a valid quantity!"); return; }
+function toggleMenu() {
+    document.getElementById("navContent").classList.toggle("active");
+}
+</script>
 
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            let existingItem = cart.find(item => item.name === name);
-            if (existingItem) { existingItem.qty += qty; } 
-            else { cart.push({name, price, qty}); }
-            localStorage.setItem("cart", JSON.stringify(cart));
-            alert(name + " added to cart!");
-        }
-
-        function buyNow(name, price, btn) {
-            localStorage.removeItem("cart"); 
-            let qtyInput = btn.closest(".menu-card").querySelector("input[type='number']");
-            let qty = parseInt(qtyInput.value);
-            if (!qty || qty < 1) { alert("Please enter a valid quantity!"); return; }
-
-            localStorage.setItem("cart", JSON.stringify([{name, price, qty}]));
-            window.location.href = "#cart";
-        }
-    </script>
 </body>
 </html>
